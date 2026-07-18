@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Neoane Games</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        .lang-switcher button {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .flag-icon {
+            width: 20px;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .footer-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin: 0 10px;
+            font-size: 0.9rem;
+        }
+        .footer-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 100px 20px 50px 20px;
+            line-height: 1.6;
+        }
+        .legal-content h1 { margin-bottom: 20px; }
+        .legal-content h2 { margin-top: 30px; margin-bottom: 15px; font-size: 1.3rem;}
+        .legal-content p { margin-bottom: 15px; }
+        .legal-content ul { margin-bottom: 15px; padding-left: 20px; }
+        .legal-content li { margin-bottom: 8px; }
+
+        /* Animação e Estilo da "Gaveta" (Dropdown) */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            top: 100%;
+        }
+        .dropdown-content a {
+            color: #333 !important;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background-color 0.2s, color 0.2s;
+            border-radius: 8px;
+        }
+        .dropdown-content a:hover {
+            background-color: #f8f8f8;
+            color: #ff4d4d !important;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navbar Idêntico ao da Página Principal -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index" class="logo">
+                <img src="assets/NeoaneGames.png" alt="Neoane Games Logo">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+    		<li><a href="main#about" data-i18n="nav-about">About</a></li>
+    
+    		<!-- Item de Jogos com o Dropdown -->
+    		<li class="dropdown">
+        	<a href="main#games" data-i18n="nav-games">Games</a>
+        	<div class="dropdown-content">
+            	<a href="forastero">FORASTERO</a>
+        	</div>
+    		</li>
+
+    		<li><a href="main#careers" data-i18n="nav-careers">Careers</a></li>
+    		<li><a href="main#contact" data-i18n="nav-contact">Contact</a></li>
+    		<li><a href="main#social" data-i18n="nav-social">Social</a></li>
+		</ul>
+
+                <div class="lang-switcher">
+                    <button id="btn-en" class="active" onclick="setLanguage('en')">
+                        <img src="assets/us.png" alt="English" class="flag-icon"> EN
+                    </button>
+                    <span>|</span>
+                    <button id="btn-pt" onclick="setLanguage('pt')">
+                        <img src="assets/br.png" alt="Português" class="flag-icon"> PT-BR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Legal -->
+    <section class="section legal-content">
+        <h1 data-i18n="term-title">Terms of Service</h1>
+        
+        <h2 data-i18n="term-h2-1">1. Terms</h2>
+        <p data-i18n="term-p1">By accessing the website at Neoane Games you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.</p>
+        
+        <h2 data-i18n="term-h2-2">2. Use License</h2>
+        <p data-i18n="term-p2">Permission is granted to temporarily download one copy of the materials (information or software) on Neoane Games's website for personal, non-commercial transitory viewing only. This is the grant of a licence, not a transfer of title, and under this licence you may not:</p>
+        <ul>
+            <li data-i18n="term-li1">modify or copy the materials;</li>
+            <li data-i18n="term-li2">use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li>
+            <li data-i18n="term-li3">attempt to decompile or reverse engineer any software contained on Neoane Games website;</li>
+            <li data-i18n="term-li4">remove any copyright or other proprietary notations from the materials; or</li>
+            <li data-i18n="term-li5">transfer the materials to another person or 'mirror' the materials on any other server.</li>
+        </ul>
+        <p data-i18n="term-p3">This licence shall automatically terminate if you violate any of these restrictions and may be terminated by Neoane Games at any time. Upon terminating your viewing of these materials or upon the termination of this licence, you must destroy any downloaded materials in your possession whether in electronic or printed format.</p>
+        
+        <h2 data-i18n="term-h2-3">3. Disclaimer</h2>
+        <p data-i18n="term-p4">The materials on Neoane Games's website are provided on an 'as is' basis. Neoane Games makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+        <p data-i18n="term-p5">Further, Neoane Games does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.</p>
+        
+        <h2 data-i18n="term-h2-4">4. Limitations</h2>
+        <p data-i18n="term-p6">In no event shall Neoane Games or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Neoane Games's website, even if Neoane Games or a Neoane Games authorised representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p>
+        
+        <h2 data-i18n="term-h2-5">5. Accuracy of materials</h2>
+        <p data-i18n="term-p7">The materials appearing on Neoane Games's website could include technical, typographical, or photographic errors. Neoane Games does not warrant that any of the materials on its website are accurate, complete or current. Neoane Games may make changes to the materials contained on its website at any time without notice. However Neoane Games does not make any commitment to update the materials.</p>
+        
+        <h2 data-i18n="term-h2-6">6. Links</h2>
+        <p data-i18n="term-p8">Neoane Games has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Neoane Games of the site. Use of any such linked website is at the user's own risk.</p>
+        
+        <h2 data-i18n="term-h2-7">7. Modifications</h2>
+        <p data-i18n="term-p9">Neoane Games may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
+        
+        <h2 data-i18n="term-h2-8">8. Governing Law</h2>
+        <p data-i18n="term-p10">These terms and conditions are governed by and construed in accordance with the laws of Neoane Games and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center" style="padding: 20px 0;">
+            <p>
+                <span data-i18n="footer-text">&copy; 2026 Neoane Games. All rights reserved.</span>
+                <br><br>
+                <a href="privacy" class="footer-link" data-i18n="footer-privacy">Privacy Policy</a> | 
+                <a href="terms" class="footer-link" data-i18n="footer-terms">Terms and Conditions</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+    		"nav-about": "About", "nav-games": "Games", "nav-careers": "Careers", "nav-contact": "Contact", "nav-social": "Social",
+                "footer-text": "&copy; 2026 Neoane Games. All rights reserved.", "footer-privacy": "Privacy Policy", "footer-terms": "Terms and Conditions",
+                "term-title": "Terms of Service",
+                "term-h2-1": "1. Terms",
+                "term-p1": "By accessing the website at Neoane Games you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.",
+                "term-h2-2": "2. Use License",
+                "term-p2": "Permission is granted to temporarily download one copy of the materials (information or software) on Neoane Games's website for personal, non-commercial transitory viewing only. This is the grant of a licence, not a transfer of title, and under this licence you may not:",
+                "term-li1": "modify or copy the materials;",
+                "term-li2": "use the materials for any commercial purpose, or for any public display (commercial or non-commercial);",
+                "term-li3": "attempt to decompile or reverse engineer any software contained on Neoane Games website;",
+                "term-li4": "remove any copyright or other proprietary notations from the materials; or",
+                "term-li5": "transfer the materials to another person or 'mirror' the materials on any other server.",
+                "term-p3": "This licence shall automatically terminate if you violate any of these restrictions and may be terminated by Neoane Games at any time. Upon terminating your viewing of these materials or upon the termination of this licence, you must destroy any downloaded materials in your possession whether in electronic or printed format.",
+                "term-h2-3": "3. Disclaimer",
+                "term-p4": "The materials on Neoane Games's website are provided on an 'as is' basis. Neoane Games makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.",
+                "term-p5": "Further, Neoane Games does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.",
+                "term-h2-4": "4. Limitations",
+                "term-p6": "In no event shall Neoane Games or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Neoane Games's website, even if Neoane Games or a Neoane Games authorised representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.",
+                "term-h2-5": "5. Accuracy of materials",
+                "term-p7": "The materials appearing on Neoane Games's website could include technical, typographical, or photographic errors. Neoane Games does not warrant that any of the materials on its website are accurate, complete or current. Neoane Games may make changes to the materials contained on its website at any time without notice. However Neoane Games does not make any commitment to update the materials.",
+                "term-h2-6": "6. Links",
+                "term-p8": "Neoane Games has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Neoane Games of the site. Use of any such linked website is at the user's own risk.",
+                "term-h2-7": "7. Modifications",
+                "term-p9": "Neoane Games may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.",
+                "term-h2-8": "8. Governing Law",
+                "term-p10": "These terms and conditions are governed by and construed in accordance with the laws of Neoane Games and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location."
+            },
+            pt: {
+    		"nav-about": "Sobre", "nav-games": "Jogos", "nav-careers": "Carreiras", "nav-contact": "Contato", "nav-social": "Social",
+                "footer-text": "&copy; 2026 Neoane Games. Todos os direitos reservados.", "footer-privacy": "Política de Privacidade", "footer-terms": "Termos e Condições",
+                "term-title": "Termos de Serviço",
+                "term-h2-1": "1. Termos",
+                "term-p1": "Ao acessar o site da Neoane Games, você concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis ​​e concorda que é responsável pelo cumprimento de todas as leis locais aplicáveis. Se você não concordar com algum desses termos, está proibido de usar ou acessar este site. Os materiais contidos neste site são protegidos pelas leis de direitos autorais e marcas comerciais aplicáveis.",
+                "term-h2-2": "2. Licença de Uso",
+                "term-p2": "É concedida permissão para baixar temporariamente uma cópia dos materiais (informações ou software) no site da Neoane Games, apenas para visualização transitória pessoal e não comercial. Esta é a concessão de uma licença, não uma transferência de título e, sob esta licença, você não pode:",
+                "term-li1": "modificar ou copiar os materiais;",
+                "term-li2": "usar os materiais para qualquer finalidade comercial ou para exibição pública (comercial ou não comercial);",
+                "term-li3": "tentar descompilar ou fazer engenharia reversa de qualquer software contido no site da Neoane Games;",
+                "term-li4": "remover quaisquer direitos autorais ou outras notações de propriedade dos materiais; ou",
+                "term-li5": "transferir os materiais para outra pessoa ou 'espelhar' os materiais em qualquer outro servidor.",
+                "term-p3": "Esta licença será automaticamente rescindida se você violar alguma dessas restrições e poderá ser rescindida pela Neoane Games a qualquer momento. Ao encerrar a visualização desses materiais ou após o término desta licença, você deve apagar todos os materiais baixados em sua posse, seja em formato eletrônico ou impresso.",
+                "term-h2-3": "3. Isenção de responsabilidade",
+                "term-p4": "Os materiais no site da Neoane Games são fornecidos 'como estão'. A Neoane Games não oferece garantias, expressas ou implícitas, e, por este meio, isenta e nega todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização, adequação a um fim específico ou não violação de propriedade intelectual ou outra violação de direitos.",
+                "term-p5": "Além disso, a Neoane Games não garante ou faz qualquer representação relativa à precisão, aos resultados prováveis ​​ou à confiabilidade do uso dos materiais em seu site ou de outra forma relacionado a esses materiais ou em sites vinculados a este site.",
+                "term-h2-4": "4. Limitações",
+                "term-p6": "Em nenhum caso a Neoane Games ou seus fornecedores serão responsáveis ​​por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro ou devido a interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais no site da Neoane Games, mesmo que a Neoane Games ou um representante autorizado tenha sido notificado oralmente ou por escrito da possibilidade de tais danos. Como algumas jurisdições não permitem limitações em garantias implícitas, ou limitações de responsabilidade por danos consequentes ou incidentais, essas limitações podem não se aplicar a você.",
+                "term-h2-5": "5. Precisão dos materiais",
+                "term-p7": "Os materiais exibidos no site da Neoane Games podem incluir erros técnicos, tipográficos ou fotográficos. A Neoane Games não garante que qualquer material em seu site seja preciso, completo ou atual. A Neoane Games pode fazer alterações nos materiais contidos em seu site a qualquer momento, sem aviso prévio. No entanto, a Neoane Games não se compromete a atualizar os materiais.",
+                "term-h2-6": "6. Links",
+                "term-p8": "A Neoane Games não analisou todos os sites vinculados ao seu site e não é responsável pelo conteúdo de nenhum site vinculado. A inclusão de qualquer link não implica endosso por parte da Neoane Games do site. O uso de qualquer site vinculado é por conta e risco do usuário.",
+                "term-h2-7": "7. Modificações",
+                "term-p9": "A Neoane Games pode revisar estes termos de serviço do site a qualquer momento, sem aviso prévio. Ao usar este site, você concorda em ficar vinculado à versão atual desses termos de serviço.",
+                "term-h2-8": "8. Lei Aplicável",
+                "term-p10": "Estes termos e condições são regidos e interpretados de acordo com as leis da Neoane Games e você se submete irrevogavelmente à jurisdição exclusiva dos tribunais naquele estado ou localidade."
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById('btn-pt').classList.remove('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            localStorage.setItem('neoane-lang', lang);
+        }
+
+        window.onload = () => {
+            const savedLang = localStorage.getItem('neoane-lang') || 'en';
+            setLanguage(savedLang);
+        };
+    </script>
+</body>
+</html>

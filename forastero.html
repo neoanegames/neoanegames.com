@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forastero</title>
+    <style>
+        /* CSS para tornar o iframe do YouTube 100% responsivo e profissional */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Mantém a proporção de 16:9 do vídeo */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin-bottom: 40px; /* Espaço entre o vídeo e as screenshots */
+            border-radius: 8px; /* Bordas levemente arredondadas */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra suave para destacar o trailer */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        /* Estilo básico para organizar as screenshots logo abaixo */
+        .screenshots-section {
+            margin-top: 20px;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .screenshots-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshots-grid img:hover {
+            transform: scale(1.02); /* Efeito de zoom leve ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CONTAINER PRINCIPAL DO JOGO -->
+    <main style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        
+        <h1>Forastero</h1>
+        <p>Confira o trailer oficial de gameplay e imagens do jogo.</p>
+
+        <!-- 1. SEÇÃO DO TRAILER (Fica exatamente em cima das screenshots) -->
+        <section class="trailer-section">
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/Xkffc-DQlp8?si=KH-YjQclbkjNfA4j" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- 2. SEÇÃO DAS SCREENSHOTS (Logo abaixo do trailer) -->
+        <section class="screenshots-section">
+            <h2>Screenshots</h2>
+            <div class="screenshots-grid">
+                <!-- Substitua o src pelo caminho real das suas imagens -->
+                <img src="caminho/para/sua/screenshot1.jpg" alt="Screenshot de Forastero 1">
+                <img src="caminho/para/sua/screenshot2.jpg" alt="Screenshot de Forastero 2">
+                <img src="caminho/para/sua/screenshot3.jpg" alt="Screenshot de Forastero 3">
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

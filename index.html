@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neoane Games | Independent Publisher</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        .lang-switcher button { display: inline-flex; align-items: center; gap: 6px; }
+        .flag-icon { width: 20px; height: auto; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .footer-link { color: #a0a0a0; text-decoration: none; transition: color 0.3s ease; margin: 0 10px; font-size: 0.9rem; }
+        .footer-link:hover { color: #ffffff; text-decoration: underline; }
+
+        /* Animação e Estilo da "Gaveta" (Dropdown) */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            top: 100%;
+        }
+        .dropdown-content a {
+            color: #333 !important;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background-color 0.2s, color 0.2s;
+            border-radius: 8px;
+        }
+        .dropdown-content a:hover {
+            background-color: #f8f8f8;
+            color: #ff4d4d !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar apontando para a main -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index" class="logo">
+                <img src="assets/NeoaneGames.png" alt="Neoane Games Logo">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="main#about" data-i18n="nav-about">About</a></li>
+                    
+                    <!-- Item de Jogos com o Dropdown -->
+                    <li class="dropdown">
+                        <a href="main#games" data-i18n="nav-games">Games</a>
+                        <div class="dropdown-content">
+                            <a href="forastero">FORASTERO</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="main#careers" data-i18n="nav-careers">Careers</a></li>
+                    <li><a href="main#contact" data-i18n="nav-contact">Contact</a></li>
+                    <li><a href="main#social" data-i18n="nav-social">Social</a></li>
+                </ul>
+                <div class="lang-switcher">
+                    <button id="btn-en" class="active" onclick="setLanguage('en')">
+                        <img src="assets/us.png" alt="English" class="flag-icon"> EN
+                    </button>
+                    <span>|</span>
+                    <button id="btn-pt" onclick="setLanguage('pt')">
+                        <img src="assets/br.png" alt="Português" class="flag-icon"> PT-BR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Parallax Hero Ocupando a Tela Inteira -->
+    <header class="hero parallax" style="background-image: url('assets/Wallpaper1920x1080.jpg'); min-height: 100vh;">
+        <div class="hero-overlay">
+            <div class="hero-content anim-fade-up">
+                <h1 data-i18n="hero-title">Welcome to Neoane Games</h1>
+                <p data-i18n="hero-subtitle">Independent Digital Game Publisher</p>
+                <a href="main" class="btn" data-i18n="hero-btn">Explore</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center" style="padding: 20px 0;">
+            <p>
+                <span data-i18n="footer-text">&copy; 2026 Neoane Games. All rights reserved.</span>
+                <br><br>
+                <a href="privacy" class="footer-link" data-i18n="footer-privacy">Privacy Policy</a> | 
+                <a href="terms" class="footer-link" data-i18n="footer-terms">Terms and Conditions</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                "nav-about": "About", "nav-games": "Games", "nav-careers": "Careers", "nav-contact": "Contact", "nav-social": "Social",
+                "hero-title": "Welcome to Neoane Games", "hero-subtitle": "Independent Digital Game Publisher", "hero-btn": "Explore",
+                "footer-text": "&copy; 2026 Neoane Games. All rights reserved.", "footer-privacy": "Privacy Policy", "footer-terms": "Terms and Conditions"
+            },
+            pt: {
+                "nav-about": "Sobre", "nav-games": "Jogos", "nav-careers": "Carreiras", "nav-contact": "Contato", "nav-social": "Social",
+                "hero-title": "Bem-vindo à Neoane Games", "hero-subtitle": "Publicadora Independente de Jogos Digitais", "hero-btn": "Conhecer",
+                "footer-text": "&copy; 2026 Neoane Games. Todos os direitos reservados.", "footer-privacy": "Política de Privacidade", "footer-terms": "Termos e Condições"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById('btn-pt').classList.remove('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            localStorage.setItem('neoane-lang', lang);
+        }
+
+        window.onload = () => {
+            const savedLang = localStorage.getItem('neoane-lang') || 'en';
+            setLanguage(savedLang);
+            document.querySelector('.anim-fade-up').classList.add('anim-visible');
+        };
+    </script>
+</body>
+</html>

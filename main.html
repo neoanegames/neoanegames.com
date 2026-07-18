@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neoane Games</title>
+    
+    <!-- FAVICON: Salve seu ícone 512x512 como 'favicon.png' na pasta assets -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        .lang-switcher button { display: inline-flex; align-items: center; gap: 6px; }
+        .flag-icon { width: 20px; height: auto; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .footer-link { color: #a0a0a0; text-decoration: none; transition: color 0.3s ease; margin: 0 10px; font-size: 0.9rem; }
+        .footer-link:hover { color: #ffffff; text-decoration: underline; }
+        .vacancy-number { font-size: 1.5rem; font-weight: bold; color: #ff4d4d; }
+
+        /* Animação e Estilo da "Gaveta" (Dropdown) */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 70%; /* Começa um pouco para cima para dar o efeito de saída */
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição bem fluida */
+        }
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            top: 100%; /* Desce para a posição final */
+        }
+        .dropdown-content a {
+            color: #333 !important;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background-color 0.2s, color 0.2s;
+            border-radius: 8px;
+        }
+        .dropdown-content a:hover {
+            background-color: #f8f8f8;
+            color: #ff4d4d !important; /* Cor de destaque ao passar o mouse */
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index" class="logo">
+                <img src="assets/NeoaneGames.png" alt="Neoane Games Logo">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#about" data-i18n="nav-about">About</a></li>
+                    
+                    <!-- Item de Jogos com o Dropdown -->
+                    <li class="dropdown">
+                        <a href="#games" data-i18n="nav-games">Games</a>
+                        <div class="dropdown-content">
+                            <a href="forastero">FORASTERO</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="#careers" data-i18n="nav-careers">Careers</a></li>
+                    <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+                    <li><a href="#social" data-i18n="nav-social">Social</a></li>
+                </ul>
+                <div class="lang-switcher">
+                    <button id="btn-en" class="active" onclick="setLanguage('en')">
+                        <img src="assets/us.png" alt="English" class="flag-icon"> EN
+                    </button>
+                    <span>|</span>
+                    <button id="btn-pt" onclick="setLanguage('pt')">
+                        <img src="assets/br.png" alt="Português" class="flag-icon"> PT-BR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Espaçamento para o menu fixo não cobrir o conteúdo -->
+    <div style="height: 80px; background-color: #ffffff;"></div>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-white">
+        <div class="container text-center">
+            <h2 class="section-title anim-fade-up" data-i18n="about-title">About Us</h2>
+            <p class="about-text anim-fade-up" data-i18n="about-text">
+                Neoane Games is an independent game developer and publisher based in Santos, Brazil. 
+                The studio is focused on creating action games with responsive gameplay, fluid mechanics, 
+                and carefully crafted experiences.
+            </p>
+        </div>
+    </section>
+
+    <!-- Parallax Divider -->
+    <div class="parallax-divider parallax" style="background-image: url('assets/Wallpaper1920x1080.jpg');"></div>
+
+    <!-- Games Section -->
+    <section id="games" class="section bg-white">
+        <div class="container">
+            <h2 class="section-title text-center anim-fade-up" data-i18n="games-title">Featured Game</h2>
+            <div class="game-card">
+                <div class="game-image anim-slide-left">
+                    <img src="assets/CoverImage.jpg" alt="Forastero">
+                </div>
+                <div class="game-info anim-fade-up">
+                    <h3>Forastero</h3>
+                    <p data-i18n="games-desc">Forastero is a third-person beat 'em up focused on fast-paced melee combat and a stylized Western atmosphere.</p>
+                    <br>
+                    <a href="forastero" class="btn" data-i18n="games-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="careers" class="section" style="background-color: #080808; color: #ffffff;">
+        <div class="container text-center">
+            <h2 class="section-title anim-fade-up" data-i18n="careers-title" style="color: #ffffff; margin-bottom: 15px;">Careers</h2>
+            <img src="assets/NeoaneGamesW.png" alt="Neoane Games Logo" style="max-width: 120px; display: block; margin: 0 auto 25px auto; filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));">
+            <p class="about-text anim-fade-up" data-i18n="careers-text" style="color: #e0e0e0; margin-bottom: 25px; font-size: 1.1rem;">
+                Be part of the team and develop games with Neoane Games.
+            </p>
+            <div class="anim-fade-up">
+                <p data-i18n="careers-vacancies" style="font-size: 1.2rem; color: #ffffff;">
+                    Total open positions: <span class="vacancy-number">0</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light">
+        <div class="container text-center">
+            <h2 class="section-title anim-fade-up" data-i18n="contact-title">Contact</h2>
+            <p class="contact-subtext anim-fade-up" data-i18n="contact-sub">Get in touch with us for business inquiries or press.</p>
+            <div class="contact-info anim-fade-up">
+                <a href="mailto:info@neoanegames.com" class="email-link">
+                    <i class="fa-solid fa-envelope"></i> info@neoanegames.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Section (Atualizado com Bluesky e Twitch) -->
+    <section id="social" class="section bg-white">
+        <div class="container text-center">
+            <h2 class="section-title anim-fade-up" data-i18n="social-title">Social Media</h2>
+            <p class="contact-subtext anim-fade-up" data-i18n="social-sub">Follow us on our social networks to stay updated.</p>
+            <div class="social-links anim-fade-up" style="margin-top: 20px;">
+                <a href="https://www.facebook.com/neoanegames" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/neoanegames/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/NeoaneGames" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://bsky.app/profile/neoanegames.bsky.social" target="_blank" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                <a href="https://www.twitch.tv/neoanegames" target="_blank" title="Twitch"><i class="fa-brands fa-twitch"></i></a>
+                <a href="https://www.youtube.com/@NeoaneGames" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center" style="padding: 20px 0;">
+            <p>
+                <span data-i18n="footer-text">&copy; 2026 Neoane Games. All rights reserved.</span>
+                <br><br>
+                <a href="privacy" class="footer-link" data-i18n="footer-privacy">Privacy Policy</a> | 
+                <a href="terms" class="footer-link" data-i18n="footer-terms">Terms and Conditions</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        const translations = {
+            en: {
+                "nav-about": "About", "nav-games": "Games", "nav-careers": "Careers", "nav-contact": "Contact", "nav-social": "Social",
+                "about-title": "About Us",
+                "about-text": "Neoane Games is an independent game developer and publisher based in Santos, Brazil. The studio is focused on creating action games with responsive gameplay, fluid mechanics, and carefully crafted experiences.",
+                "games-title": "Featured Game",
+                "games-desc": "Forastero is a third-person beat 'em up focused on fast-paced melee combat and a stylized Western atmosphere.",
+                "games-btn": "Learn More",
+                "careers-title": "Careers",
+                "careers-text": "Be part of the team and develop games with Neoane Games.",
+                "careers-vacancies": 'Total open positions: <span class="vacancy-number">0</span>',
+                "contact-title": "Contact",
+                "contact-sub": "Get in touch with us for business inquiries or press.",
+                "social-title": "Social Media",
+                "social-sub": "Follow us on our social networks to stay updated.",
+                "footer-text": "&copy; 2026 Neoane Games. All rights reserved.",
+                "footer-privacy": "Privacy Policy", "footer-terms": "Terms and Conditions"
+            },
+            pt: {
+                "nav-about": "Sobre", "nav-games": "Jogos", "nav-careers": "Carreiras", "nav-contact": "Contato", "nav-social": "Social",
+                "about-title": "Sobre Nós",
+                "about-text": "A Neoane Games é uma desenvolvedora e publicadora independente de jogos sediada em Santos, Brasil. O estúdio tem como foco criar jogos de ação com jogabilidade responsiva, mecânicas fluidas e experiências cuidadosamente elaboradas.",
+                "games-title": "Jogo em Destaque",
+                "games-desc": "Forastero é um beat 'em up em terceira pessoa focado em combate corpo a corpo acelerado e uma atmosfera faroeste estilizada.",
+                "games-btn": "Conhecer",
+                "careers-title": "Trabalhe Conosco",
+                "careers-text": "Faça parte da equipe para desenvolver jogos com a Neoane Games.",
+                "careers-vacancies": 'Total de vagas disponíveis: <span class="vacancy-number">0</span>',
+                "contact-title": "Contato",
+                "contact-sub": "Entre em contato conosco para parcerias ou imprensa.",
+                "social-title": "Redes Sociais",
+                "social-sub": "Siga-nos em nossas redes sociais para ficar por dentro das novidades.",
+                "footer-text": "&copy; 2026 Neoane Games. Todos os direitos reservados.",
+                "footer-privacy": "Política de Privacidade", "footer-terms": "Termos e Condições"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById('btn-pt').classList.remove('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            localStorage.setItem('neoane-lang', lang);
+        }
+
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('anim-visible'); } 
+                else { entry.target.classList.remove('anim-visible'); }
+            });
+        }, observerOptions);
+
+        window.onload = () => {
+            const savedLang = localStorage.getItem('neoane-lang') || 'en';
+            setLanguage(savedLang);
+            document.querySelectorAll('.anim-fade-up, .anim-slide-left').forEach(el => {
+                observer.observe(el);
+            });
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Neoane Games</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        .lang-switcher button {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .flag-icon {
+            width: 20px;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .footer-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin: 0 10px;
+            font-size: 0.9rem;
+        }
+        .footer-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 100px 20px 50px 20px;
+            line-height: 1.6;
+        }
+        .legal-content h1 { margin-bottom: 20px; }
+        .legal-content h2 { margin-top: 30px; margin-bottom: 15px; font-size: 1.5rem;}
+        .legal-content p { margin-bottom: 15px; }
+        .legal-content ul { margin-bottom: 15px; padding-left: 20px; }
+        .legal-content li { margin-bottom: 8px; }
+
+        /* Animação e Estilo da "Gaveta" (Dropdown) */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            top: 100%;
+        }
+        .dropdown-content a {
+            color: #333 !important;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background-color 0.2s, color 0.2s;
+            border-radius: 8px;
+        }
+        .dropdown-content a:hover {
+            background-color: #f8f8f8;
+            color: #ff4d4d !important;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navbar Idêntico ao da Página Principal -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index" class="logo">
+                <img src="assets/NeoaneGames.png" alt="Neoane Games Logo">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+    		<li><a href="main#about" data-i18n="nav-about">About</a></li>
+    
+    		<!-- Item de Jogos com o Dropdown -->
+    		<li class="dropdown">
+        	<a href="main#games" data-i18n="nav-games">Games</a>
+        	<div class="dropdown-content">
+            	<a href="forastero">FORASTERO</a>
+        	</div>
+    		</li>
+
+    		<li><a href="main#careers" data-i18n="nav-careers">Careers</a></li>
+    		<li><a href="main#contact" data-i18n="nav-contact">Contact</a></li>
+    		<li><a href="main#social" data-i18n="nav-social">Social</a></li>
+		</ul>
+
+                <div class="lang-switcher">
+                    <button id="btn-en" class="active" onclick="setLanguage('en')">
+                        <img src="assets/us.png" alt="English" class="flag-icon"> EN
+                    </button>
+                    <span>|</span>
+                    <button id="btn-pt" onclick="setLanguage('pt')">
+                        <img src="assets/br.png" alt="Português" class="flag-icon"> PT-BR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Legal -->
+    <section class="section legal-content">
+        <h1 data-i18n="priv-title">Privacy Policy</h1>
+        <p data-i18n="priv-p1">Your privacy is important to us. It is Neoane Games's policy to respect your privacy regarding any information we may collect from you across our website, Neoane Games, and other sites we own and operate.</p>
+        <p data-i18n="priv-p2">We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
+        <p data-i18n="priv-p3">We only retain collected information for as long as necessary to provide you with your requested service. What data we store, we’ll protect within commercially acceptable means to prevent loss and theft, as well as unauthorised access, disclosure, copying, use or modification.</p>
+        <p data-i18n="priv-p4">We don’t share any personally identifying information publicly or with third-parties, except when required to by law.</p>
+        <p data-i18n="priv-p5">Our website may link to external sites that are not operated by us. Please be aware that we have no control over the content and practices of these sites, and cannot accept responsibility or liability for their respective privacy policies.</p>
+        <p data-i18n="priv-p6">You are free to refuse our request for your personal information, with the understanding that we may be unable to provide you with some of your desired services.</p>
+        <p data-i18n="priv-p7">Your continued use of our website will be regarded as acceptance of our practices around privacy and personal information. If you have any questions about how we handle user data and personal information, feel free to contact us.</p>
+        
+        <h2 data-i18n="priv-h2-1">User's responsibilities</h2>
+        <p data-i18n="priv-p8">The user undertakes the responsibility to make appropriate use of the contents and information offered on the site with enunciative, but not imitative, behaviour:</p>
+        <ul>
+            <li data-i18n="priv-li1">A) Not to engage in activities that are illegal or contrary to good faith and public order;</li>
+            <li data-i18n="priv-li2">B) Not to spread propaganda or content of a racist, xenophobic or gambling nature, any type of illegal pornography, terrorist claims or against human rights;</li>
+            <li data-i18n="priv-li3">C) Do not cause damage to physical systems (hardware) and unattainable (software) of Neoane Games, its suppliers or third parties, to introduce or disseminate computer viruses or any other hardware or software systems that are capable of causing damage previously mentioned.</li>
+        </ul>
+
+        <h2 data-i18n="priv-h2-2">More information</h2>
+        <p data-i18n="priv-p9">Hopefully that has clarified things for you and as was previously mentioned if there is something that you aren't sure whether you need or not it's usually safer to leave cookies enabled in case it does interact with one of the features you use on our site.</p>
+        <p data-i18n="priv-p10">This policy is effective as of 17 July 2026 02:31.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center" style="padding: 20px 0;">
+            <p>
+                <span data-i18n="footer-text">&copy; 2026 Neoane Games. All rights reserved.</span>
+                <br><br>
+                <a href="privacy" class="footer-link" data-i18n="footer-privacy">Privacy Policy</a> | 
+                <a href="terms" class="footer-link" data-i18n="footer-terms">Terms and Conditions</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+    		"nav-about": "About", "nav-games": "Games", "nav-careers": "Careers", "nav-contact": "Contact", "nav-social": "Social",
+                "footer-text": "&copy; 2026 Neoane Games. All rights reserved.", "footer-privacy": "Privacy Policy", "footer-terms": "Terms and Conditions",
+                "priv-title": "Privacy Policy",
+                "priv-p1": "Your privacy is important to us. It is Neoane Games's policy to respect your privacy regarding any information we may collect from you across our website, Neoane Games, and other sites we own and operate.",
+                "priv-p2": "We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.",
+                "priv-p3": "We only retain collected information for as long as necessary to provide you with your requested service. What data we store, we’ll protect within commercially acceptable means to prevent loss and theft, as well as unauthorised access, disclosure, copying, use or modification.",
+                "priv-p4": "We don’t share any personally identifying information publicly or with third-parties, except when required to by law.",
+                "priv-p5": "Our website may link to external sites that are not operated by us. Please be aware that we have no control over the content and practices of these sites, and cannot accept responsibility or liability for their respective privacy policies.",
+                "priv-p6": "You are free to refuse our request for your personal information, with the understanding that we may be unable to provide you with some of your desired services.",
+                "priv-p7": "Your continued use of our website will be regarded as acceptance of our practices around privacy and personal information. If you have any questions about how we handle user data and personal information, feel free to contact us.",
+                "priv-h2-1": "User's responsibilities",
+                "priv-p8": "The user undertakes the responsibility to make appropriate use of the contents and information offered on the site with enunciative, but not imitative, behaviour:",
+                "priv-li1": "A) Not to engage in activities that are illegal or contrary to good faith and public order;",
+                "priv-li2": "B) Not to spread propaganda or content of a racist, xenophobic or gambling nature, any type of illegal pornography, terrorist claims or against human rights;",
+                "priv-li3": "C) Do not cause damage to physical systems (hardware) and unattainable (software) of Neoane Games, its suppliers or third parties, to introduce or disseminate computer viruses or any other hardware or software systems that are capable of causing damage previously mentioned.",
+                "priv-h2-2": "More information",
+                "priv-p9": "Hopefully that has clarified things for you and as was previously mentioned if there is something that you aren't sure whether you need or not it's usually safer to leave cookies enabled in case it does interact with one of the features you use on our site.",
+                "priv-p10": "This policy is effective as of 17 July 2026 02:31."
+            },
+            pt: {
+    		"nav-about": "Sobre", "nav-games": "Jogos", "nav-careers": "Carreiras", "nav-contact": "Contato", "nav-social": "Social",
+                "footer-text": "&copy; 2026 Neoane Games. Todos os direitos reservados.", "footer-privacy": "Política de Privacidade", "footer-terms": "Termos e Condições",
+                "priv-title": "Política de Privacidade",
+                "priv-p1": "Sua privacidade é importante para nós. É política da Neoane Games respeitar a sua privacidade em relação a qualquer informação que possamos coletar de você em nosso site, Neoane Games, e outros sites que possuímos e operamos.",
+                "priv-p2": "Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemos isso por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.",
+                "priv-p3": "Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado. Quando armazenamos dados, os protegemos dentro de meios comercialmente aceitáveis para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.",
+                "priv-p4": "Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.",
+                "priv-p5": "Nosso site pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.",
+                "priv-p6": "Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.",
+                "priv-p7": "O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, sinta-se à vontade para entrar em contato.",
+                "priv-h2-1": "Responsabilidades do usuário",
+                "priv-p8": "O usuário se compromete a fazer uso adequado dos conteúdos e da informação oferecida no site com comportamento enunciativo, mas não imitativo:",
+                "priv-li1": "A) Não se envolver em atividades que sejam ilegais ou contrárias à boa fé e à ordem pública;",
+                "priv-li2": "B) Não divulgar propaganda ou conteúdo de natureza racista, xenofóbica ou de jogos de azar, qualquer tipo de pornografia ilegal, apologia ao terrorismo ou contra os direitos humanos;",
+                "priv-li3": "C) Não causar danos aos sistemas físicos (hardware) e lógicos (software) da Neoane Games, de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar danos anteriormente mencionados.",
+                "priv-h2-2": "Mais informações",
+                "priv-p9": "Esperamos que isso tenha esclarecido as coisas para você e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site.",
+                "priv-p10": "Esta política é efetiva a partir de 17 de julho de 2026 02:31."
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById('btn-pt').classList.remove('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            localStorage.setItem('neoane-lang', lang);
+        }
+
+        window.onload = () => {
+            const savedLang = localStorage.getItem('neoane-lang') || 'en';
+            setLanguage(savedLang);
+        };
+    </script>
+</body>
+</html>
