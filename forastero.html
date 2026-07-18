@@ -1,89 +1,322 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forastero</title>
+    <title>Forastero | Neoane Games</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
-        /* CSS para tornar o iframe do YouTube 100% responsivo e profissional */
-        .video-container {
+        .lang-switcher button { display: inline-flex; align-items: center; gap: 6px; }
+        .flag-icon { width: 20px; height: auto; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .footer-link { color: #a0a0a0; text-decoration: none; transition: color 0.3s ease; margin: 0 10px; font-size: 0.9rem; }
+        .footer-link:hover { color: #ffffff; text-decoration: underline; }
+        
+        .game-header { width: 100%; max-height: 500px; object-fit: cover; display: block; margin-top: 80px; }
+        
+        .game-content { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .game-title { font-size: 3rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+        .platforms-info { font-size: 1.2rem; margin-bottom: 30px; font-weight: 700; color: #333; }
+        .platforms-info i { margin-right: 5px; font-size: 1.3rem; }
+        
+        /* Carousel de Screenshots e Vídeo */
+        .screenshots-wrapper { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 15px; margin: 30px 0; scroll-behavior: smooth; }
+        .screenshots-wrapper::-webkit-scrollbar { height: 8px; }
+        .screenshots-wrapper::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        .screenshots-wrapper::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+        .screenshots-wrapper img { height: 250px; border-radius: 8px; object-fit: cover; flex-shrink: 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        /* Item de Vídeo no Carousel */
+        .screenshots-wrapper .video-item { height: 250px; width: 444px; flex-shrink: 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .screenshots-wrapper .video-item iframe { width: 100%; height: 100%; border: none; }
+        
+        .info-section { margin-bottom: 40px; }
+        .info-section h2 { font-size: 1.8rem; margin-bottom: 15px; border-bottom: 2px solid #000; display: inline-block; padding-bottom: 5px; }
+        .info-section p { line-height: 1.6; margin-bottom: 15px; font-size: 1.05rem; }
+        .info-list { list-style-type: disc; padding-left: 20px; line-height: 1.6; font-size: 1.05rem; }
+        .info-list li { margin-bottom: 10px; }
+        
+        /* Requisitos de Sistema */
+        .sys-req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background-color: #f8f8f8; padding: 25px; border-radius: 8px; }
+        @media (max-width: 768px) { .sys-req-grid { grid-template-columns: 1fr; } }
+        .sys-req-col h3 { font-size: 1.2rem; margin-bottom: 15px; color: #222; }
+        .sys-req-list { list-style: none; padding: 0; font-size: 0.95rem; line-height: 1.6; }
+        .sys-req-list li strong { color: #555; }
+
+        /* Animação e Estilo da "Gaveta" (Dropdown) */
+        .dropdown {
             position: relative;
-            padding-bottom: 56.25%; /* Mantém a proporção de 16:9 do vídeo */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            margin-bottom: 40px; /* Espaço entre o vídeo e as screenshots */
-            border-radius: 8px; /* Bordas levemente arredondadas */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra suave para destacar o trailer */
+            display: inline-block;
         }
-
-        .video-container iframe {
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            top: 100%;
+        }
+        .dropdown-content a {
+            color: #333 !important;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background-color 0.2s, color 0.2s;
             border-radius: 8px;
         }
-
-        /* Estilo básico para organizar as screenshots logo abaixo */
-        .screenshots-section {
-            margin-top: 20px;
-        }
-
-        .screenshots-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .screenshots-grid img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .screenshots-grid img:hover {
-            transform: scale(1.02); /* Efeito de zoom leve ao passar o mouse */
+        .dropdown-content a:hover {
+            background-color: #f8f8f8;
+            color: #ff4d4d !important;
         }
     </style>
 </head>
-<body>
+<body class="bg-white">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index" class="logo">
+                <img src="assets/NeoaneGames.png" alt="Neoane Games Logo">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="main#about" data-i18n="nav-about">About</a></li>
+                    
+                    <!-- Item de Jogos com o Dropdown -->
+                    <li class="dropdown">
+                        <a href="main#games" data-i18n="nav-games">Games</a>
+                        <div class="dropdown-content">
+                            <a href="forastero">FORASTERO</a>
+                        </div>
+                    </li>
 
-    <!-- CONTAINER PRINCIPAL DO JOGO -->
-    <main style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+                    <li><a href="main#careers" data-i18n="nav-careers">Careers</a></li>
+                    <li><a href="main#contact" data-i18n="nav-contact">Contact</a></li>
+                    <li><a href="main#social" data-i18n="nav-social">Social</a></li>
+                </ul>
+                <div class="lang-switcher">
+                    <button id="btn-en" class="active" onclick="setLanguage('en')">
+                        <img src="assets/us.png" alt="English" class="flag-icon"> EN
+                    </button>
+                    <span>|</span>
+                    <button id="btn-pt" onclick="setLanguage('pt')">
+                        <img src="assets/br.png" alt="Português" class="flag-icon"> PT-BR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Capa do Jogo -->
+    <img src="assets/CoverImage2.jpg" alt="Forastero Banner" class="game-header anim-fade-up">
+
+    <div class="game-content">
+        <h1 class="game-title anim-fade-up">Forastero</h1>
         
-        <h1>Forastero</h1>
-        <p>Confira o trailer oficial de gameplay e imagens do jogo.</p>
+        <p class="platforms-info anim-fade-up">
+            <i class="fa-brands fa-xbox"></i> <i class="fa-brands fa-playstation"></i> 
+            <span data-i18n="forastero-platforms">Coming soon to Xbox Series S|X and PlayStation 5</span>
+        </p>
 
-        <!-- 1. SEÇÃO DO TRAILER (Fica exatamente em cima das screenshots) -->
-        <section class="trailer-section">
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/Xkffc-DQlp8?si=KH-YjQclbkjNfA4j" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin" 
-                    allowfullscreen>
-                </iframe>
+        <!-- Steam Widget -->
+        <div class="anim-fade-up" style="margin-bottom: 40px;">
+            <iframe src="https://store.steampowered.com/widget/2401280/" frameborder="0" width="646" height="190" style="max-width: 100%;"></iframe>
+        </div>
+
+        <!-- Screenshots e Trailer -->
+        <div class="screenshots-wrapper anim-fade-up">
+            <!-- Trailer Gameplay -->
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/Xkffc-DQlp8?si=KH-YjQclbkjNfA4j" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-        </section>
+            <!-- Imagens -->
+            <img src="assets/PRINT00.jpg" alt="Forastero Screenshot 1">
+            <img src="assets/PRINT01.jpg" alt="Forastero Screenshot 2">
+            <img src="assets/PRINT02.jpg" alt="Forastero Screenshot 3">
+            <img src="assets/PRINT03.jpg" alt="Forastero Screenshot 4">
+            <img src="assets/PRINT04.jpg" alt="Forastero Screenshot 5">
+            <img src="assets/PRINT05.jpg" alt="Forastero Screenshot 6">
+        </div>
 
-        <!-- 2. SEÇÃO DAS SCREENSHOTS (Logo abaixo do trailer) -->
-        <section class="screenshots-section">
-            <h2>Screenshots</h2>
-            <div class="screenshots-grid">
-                <!-- Substitua o src pelo caminho real das suas imagens -->
-                <img src="caminho/para/sua/screenshot1.jpg" alt="Screenshot de Forastero 1">
-                <img src="caminho/para/sua/screenshot2.jpg" alt="Screenshot de Forastero 2">
-                <img src="caminho/para/sua/screenshot3.jpg" alt="Screenshot de Forastero 3">
+        <!-- História -->
+        <div class="info-section anim-fade-up">
+            <h2 data-i18n="forastero-story-title">Story</h2>
+            <p data-i18n="forastero-story-p1">In a land plagued by greed and violence, a government mercenary is hired to recover a mysterious jewel with a hidden power. Driven by the promise of wealth, he embarks on a mission that quickly spirals out of control.</p>
+            <p data-i18n="forastero-story-p2">During his journey, a native warrior seeking revenge and a corrupt banker with hidden agendas cross his path, complicating the mission.</p>
+            <p data-i18n="forastero-story-p3">However, the improper possession of the jewel could result in the destruction of the world, revealing that greed carries the weight to change the course of humanity.</p>
+        </div>
+
+        <!-- Jogabilidade -->
+        <div class="info-section anim-fade-up">
+            <h2 data-i18n="forastero-gameplay-title">Gameplay</h2>
+            <ul class="info-list">
+                <li data-i18n="forastero-gp-1">Intense action with strategic depth in melee combat.</li>
+                <li data-i18n="forastero-gp-2">Agile dodges and counterattacks for frantic duels.</li>
+                <li data-i18n="forastero-gp-3">Short and long-range weapons with unique styles.</li>
+                <li data-i18n="forastero-gp-4">An Ultimate meter that accumulates ammo to unleash devastating attacks.</li>
+                <li data-i18n="forastero-gp-5">Special techniques that allow aerial combos and enemy defense breaking.</li>
+            </ul>
+        </div>
+
+        <!-- Características -->
+        <div class="info-section anim-fade-up">
+            <h2 data-i18n="forastero-features-title">Features</h2>
+            <ul class="info-list">
+                <li data-i18n="forastero-feat-1">Upgrade shop to unlock new moves, special abilities, and improve attributes.</li>
+                <li data-i18n="forastero-feat-2">Adaptive AI: enemies learn from the player, studying their behavior and making each battle unique and challenging.</li>
+                <li data-i18n="forastero-feat-3">Stylized visuals inspired by Wild West comic books.</li>
+                <li data-i18n="forastero-feat-4">Finisher system and Quick Time Events for cinematic and brutal moments.</li>
+                <li data-i18n="forastero-feat-5">Varied enemies with unique reactions, doses of dark humor, and striking cultural references.</li>
+            </ul>
+        </div>
+
+        <!-- Requisitos de Sistema -->
+        <div class="info-section anim-fade-up">
+            <h2 data-i18n="forastero-sys-title">System Requirements</h2>
+            <div class="sys-req-grid">
+                <!-- Mínimos -->
+                <div class="sys-req-col">
+                    <h3 data-i18n="sys-min-title">Minimum:</h3>
+                    <ul class="sys-req-list">
+                        <li data-i18n="sys-req-os-64">Requires a 64-bit processor and operating system</li>
+                        <li><strong data-i18n="sys-os">OS:</strong> Windows 10</li>
+                        <li><strong data-i18n="sys-proc">Processor:</strong> Intel Core i5-2500 / AMD FX-8320</li>
+                        <li><strong data-i18n="sys-mem">Memory:</strong> 6 GB RAM</li>
+                        <li><strong data-i18n="sys-gpu">Graphics:</strong> NVIDIA GeForce GTX 560 / AMD Radeon HD 6870</li>
+                        <li><strong>DirectX:</strong> <span data-i18n="sys-dx">Version 11</span></li>
+                        <li><strong data-i18n="sys-sound">Sound Card:</strong> DirectX Compatible</li>
+                    </ul>
+                </div>
+                <!-- Recomendados -->
+                <div class="sys-req-col">
+                    <h3 data-i18n="sys-rec-title">Recommended:</h3>
+                    <ul class="sys-req-list">
+                        <li data-i18n="sys-req-os-64">Requires a 64-bit processor and operating system</li>
+                        <li><strong data-i18n="sys-os">OS:</strong> Windows 10 / 11</li>
+                        <li><strong data-i18n="sys-proc">Processor:</strong> Intel Core i5-4670 / AMD FX-9590</li>
+                        <li><strong data-i18n="sys-mem">Memory:</strong> 8 GB RAM</li>
+                        <li><strong data-i18n="sys-gpu">Graphics:</strong> NVIDIA GeForce GTX 660 / AMD Radeon HD 7870</li>
+                        <li><strong>DirectX:</strong> <span data-i18n="sys-dx">Version 11</span></li>
+                        <li><strong data-i18n="sys-sound">Sound Card:</strong> DirectX Compatible</li>
+                    </ul>
+                </div>
             </div>
-        </section>
+        </div>
+    </div>
 
-    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center" style="padding: 20px 0;">
+            <p>
+                <span data-i18n="footer-text">&copy; 2026 Neoane Games. All rights reserved.</span>
+                <br><br>
+                <a href="privacy" class="footer-link" data-i18n="footer-privacy">Privacy Policy</a> | 
+                <a href="terms" class="footer-link" data-i18n="footer-terms">Terms and Conditions</a>
+            </p>
+        </div>
+    </footer>
 
+    <!-- Scripts -->
+    <script>
+        const translations = {
+            en: {
+                "nav-about": "About", "nav-games": "Games", "nav-careers": "Careers", "nav-contact": "Contact", "nav-social": "Social",
+                "forastero-platforms": "Coming soon to Xbox Series S|X and PlayStation 5",
+                "forastero-story-title": "Story",
+                "forastero-story-p1": "In a land plagued by greed and violence, a government mercenary is hired to recover a mysterious jewel with a hidden power. Driven by the promise of wealth, he embarks on a mission that quickly spirals out of control.",
+                "forastero-story-p2": "During his journey, a native warrior seeking revenge and a corrupt banker with hidden agendas cross his path, complicating the mission.",
+                "forastero-story-p3": "However, the improper possession of the jewel could result in the destruction of the world, revealing that greed carries the weight to change the course of humanity.",
+                "forastero-gameplay-title": "Gameplay",
+                "forastero-gp-1": "Intense action with strategic depth in melee combat.",
+                "forastero-gp-2": "Agile dodges and counterattacks for frantic duels.",
+                "forastero-gp-3": "Short and long-range weapons with unique styles.",
+                "forastero-gp-4": "An Ultimate meter that accumulates ammo to unleash devastating attacks.",
+                "forastero-gp-5": "Special techniques that allow aerial combos and enemy defense breaking.",
+                "forastero-features-title": "Features",
+                "forastero-feat-1": "Upgrade shop to unlock new moves, special abilities, and improve attributes.",
+                "forastero-feat-2": "Adaptive AI: enemies learn from the player, studying their behavior and making each battle unique and challenging.",
+                "forastero-feat-3": "Stylized visuals inspired by Wild West comic books.",
+                "forastero-feat-4": "Finisher system and Quick Time Events for cinematic and brutal moments.",
+                "forastero-feat-5": "Varied enemies with unique reactions, doses of dark humor, and striking cultural references.",
+                "forastero-sys-title": "System Requirements",
+                "sys-min-title": "Minimum:",
+                "sys-rec-title": "Recommended:",
+                "sys-req-os-64": "Requires a 64-bit processor and operating system",
+                "sys-os": "OS:", "sys-proc": "Processor:", "sys-mem": "Memory:", "sys-gpu": "Graphics:", "sys-dx": "Version 11", "sys-sound": "Sound Card:",
+                "footer-text": "&copy; 2026 Neoane Games. All rights reserved.",
+                "footer-privacy": "Privacy Policy", "footer-terms": "Terms and Conditions"
+            },
+            pt: {
+                "nav-about": "Sobre", "nav-games": "Jogos", "nav-careers": "Carreiras", "nav-contact": "Contato", "nav-social": "Social",
+                "forastero-platforms": "Em breve para Xbox Series S|X e PlayStation 5",
+                "forastero-story-title": "História",
+                "forastero-story-p1": "Em um país assolado pela ganância e pela violência, um mercenário a serviço do governo é contratado para recuperar uma joia misteriosa com um poder oculto. Movido pela promessa de riqueza, ele embarca em uma missão que rapidamente foge do controle.",
+                "forastero-story-p2": "Durante sua jornada, uma guerreira nativa em busca de vingança e um banqueiro corrupto com interesses ocultos cruzam seu caminho, complicando a missão.",
+                "forastero-story-p3": "No entanto, a posse indevida da joia pode resultar na destruição do mundo, revelando que a ganância carrega o peso de mudar o rumo da humanidade.",
+                "forastero-gameplay-title": "Jogabilidade",
+                "forastero-gp-1": "Ação intensa com profundidade estratégica em combates corpo a corpo.",
+                "forastero-gp-2": "Esquivas e contra-ataques ágeis para duelos frenéticos.",
+                "forastero-gp-3": "Armas de curta e longa distância, com estilos únicos.",
+                "forastero-gp-4": "Um medidor de Ultimate, que acumula munição para liberar ataques devastadores.",
+                "forastero-gp-5": "Técnicas especiais que permitem combos aéreos e quebra de defesas inimigas.",
+                "forastero-features-title": "Características",
+                "forastero-feat-1": "Loja de upgrades para desbloquear novos golpes, habilidades especiais e aprimorar atributos.",
+                "forastero-feat-2": "Inteligência artificial adaptável: inimigos aprendem com o jogador, estudando seu comportamento e tornando cada batalha única e desafiadora.",
+                "forastero-feat-3": "Visual estilizado inspirado em histórias em quadrinhos de velho oeste.",
+                "forastero-feat-4": "Sistema de finalizações e Quick Time Events para momentos cinematográficos e brutais.",
+                "forastero-feat-5": "Inimigos variados, com reações únicas, doses de humor ácido e referências culturais marcantes.",
+                "forastero-sys-title": "Requisitos de sistema",
+                "sys-min-title": "Mínimos:",
+                "sys-rec-title": "Recomendados:",
+                "sys-req-os-64": "Requer um processador e sistema operacional de 64 bits",
+                "sys-os": "SO:", "sys-proc": "Processador:", "sys-mem": "Memória:", "sys-gpu": "Placa de vídeo:", "sys-dx": "Versão 11", "sys-sound": "Placa de som:",
+                "footer-text": "&copy; 2026 Neoane Games. Todos os direitos reservados.",
+                "footer-privacy": "Política de Privacidade", "footer-terms": "Termos e Condições"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById('btn-pt').classList.remove('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            localStorage.setItem('neoane-lang', lang);
+        }
+
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('anim-visible'); } 
+            });
+        }, observerOptions);
+
+        window.onload = () => {
+            const savedLang = localStorage.getItem('neoane-lang') || 'en';
+            setLanguage(savedLang);
+            document.querySelectorAll('.anim-fade-up, .anim-slide-left').forEach(el => {
+                observer.observe(el);
+            });
+        };
+    </script>
 </body>
 </html>
