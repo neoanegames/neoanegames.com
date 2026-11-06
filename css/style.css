@@ -471,7 +471,7 @@ footer {
    por isso não existe corte seco quando o bloco se repete. */
 .fog { position: absolute; left: 0; bottom: 0; width: 400%; z-index: -2; pointer-events: none; will-change: transform; }
 .fog-1 {
-    height: 62%; opacity: .6; animation: fogMove 1.5s linear infinite;
+    height: 45%; opacity: .4; animation: fogMove 5s linear infinite;
     background-size: 50% 100%; background-repeat: repeat-x;
     background-image:
         radial-gradient(ellipse 23% 38% at 25% 58%, rgba(255,246,228,.85), rgba(255,246,228,0) 100%),
@@ -526,7 +526,7 @@ footer {
 
 @media (prefers-reduced-motion: reduce) {
     .hero-bg, .scroll-hint::after { animation: none !important; }
-    .fog-1 { animation-duration: 5s !important; }
+    .fog-1 { animation-duration: 2s !important; }
     .hero-content .rise { animation: none; opacity: 1; transform: none; }
 }
 @media (max-width: 768px) {
