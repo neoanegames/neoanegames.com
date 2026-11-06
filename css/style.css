@@ -413,3 +413,131 @@ footer {
         margin-top: 120px;
     }
 }
+
+
+/* =========================================================
+   NEOANE GAMES - Visual Western (efeitos e acabamento)
+   ========================================================= */
+:root {
+    --accent: #FD9E00;          /* laranja de destaque */
+    --accent-dark: #C47500;
+    --sand: #e8c993;
+    --ink: #141010;
+}
+
+::selection { background: var(--accent); color: var(--ink); }
+
+/* Navbar com sombra que aparece ao rolar */
+.navbar { transition: box-shadow .3s ease, background-color .3s ease; }
+.navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.10); background-color: rgba(255,255,255,.98); }
+.nav-links li a { position: relative; }
+.nav-links li > a::after {
+    content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px;
+    background: var(--accent); transition: width .3s ease;
+}
+.nav-links li > a:hover::after { width: 100%; }
+.nav-links li a:hover { color: var(--primary-color); }
+.dropdown-content a:hover { color: var(--accent) !important; }
+
+/* Botões */
+.btn { position: relative; overflow: hidden; }
+.btn::before {
+    content: ''; position: absolute; inset: 0; background: var(--accent);
+    transform: translateX(-101%); transition: transform .35s ease; z-index: -1;
+}
+.btn:hover { background-color: transparent; color: var(--ink); border-color: var(--accent); }
+.btn:hover::before { transform: translateX(0); }
+.btn { isolation: isolate; }
+.btn-outline { background: rgba(255,255,255,.55); color: var(--primary-color); backdrop-filter: blur(4px); }
+.btn-outline:hover { color: var(--ink); }
+
+/* ---------- HERO (index) ---------- */
+.hero-west {
+    position: relative; height: 100vh; min-height: 600px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    background: #f1d9a8; isolation: isolate;
+}
+.hero-bg {
+    position: absolute; inset: -4%; z-index: -4;
+    background-size: cover; background-position: center 60%;
+    transform: translate3d(var(--px, 0px), var(--py, 0px), 0) scale(1.06);
+    transition: transform .25s ease-out;
+    animation: heroZoom 28s ease-in-out infinite alternate;
+}
+@keyframes heroZoom { from { filter: saturate(1.05); } to { filter: saturate(1.2) brightness(1.03); } }
+
+/* Névoa: uma única camada, mesma cor, loop contínuo da esquerda para a direita.
+   Só manchas grandes/médias, cada uma inteira dentro de um "bloco" (sem encostar nas bordas),
+   por isso não existe corte seco quando o bloco se repete. */
+.fog { position: absolute; left: 0; bottom: 0; width: 400%; z-index: -2; pointer-events: none; will-change: transform; }
+.fog-1 {
+    height: 62%; opacity: .6; animation: fogMove 1.5s linear infinite;
+    background-size: 50% 100%; background-repeat: repeat-x;
+    background-image:
+        radial-gradient(ellipse 23% 38% at 25% 58%, rgba(255,246,228,.85), rgba(255,246,228,0) 100%),
+        radial-gradient(ellipse 28% 34% at 68% 52%, rgba(255,246,228,.80), rgba(255,246,228,0) 100%),
+        radial-gradient(ellipse 17% 28% at 48% 68%, rgba(255,246,228,.75), rgba(255,246,228,0) 100%);
+}
+@keyframes fogMove { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+.sand-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
+/* Véu branco: mantém o tema claro do site e dá leitura ao texto */
+.hero-veil {
+    position: absolute; inset: 0; z-index: -3; pointer-events: none;
+    background:
+        radial-gradient(ellipse 55% 55% at 50% 52%, rgba(255,255,255,.90) 0%, rgba(255,255,255,.72) 45%, rgba(255,255,255,.18) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 70%, rgba(255,255,255,.55) 100%);
+}
+
+.hero-west .hero-content { text-align: center; padding: 100px 24px 60px; max-width: 900px; position: relative; }
+.hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 14px; margin-bottom: 18px;
+    font-size: .8rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-dark);
+}
+.hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 38px; height: 2px; background: var(--accent); }
+.hero-west h1 {
+    font-size: clamp(2.6rem, 7vw, 5.2rem); line-height: 1.02; font-weight: 800; letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 14px; color: var(--ink);
+    text-shadow: 0 2px 0 rgba(255,255,255,.8);
+}
+.hero-west .hero-sub {
+    font-size: 1.25rem; font-weight: 400; letter-spacing: 1px; margin-bottom: 38px; color: #3a2f2a;
+}
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+.scroll-hint {
+    position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+    width: 26px; height: 42px; border: 2px solid rgba(20,16,16,.55); border-radius: 14px; z-index: 2;
+}
+.scroll-hint::after {
+    content: ''; position: absolute; top: 8px; left: 50%; width: 4px; height: 8px; margin-left: -2px;
+    background: var(--ink); border-radius: 2px; animation: scrollDot 1.8s ease-in-out infinite;
+}
+@keyframes scrollDot { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
+
+/* Entrada escalonada do hero */
+.hero-content .rise { opacity: 0; transform: translateY(26px); animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+.hero-content .rise:nth-child(1) { animation-delay: .1s; }
+.hero-content .rise:nth-child(2) { animation-delay: .25s; }
+.hero-content .rise:nth-child(3) { animation-delay: .4s; }
+.hero-content .rise:nth-child(4) { animation-delay: .55s; }
+@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-bg, .scroll-hint::after { animation: none !important; }
+    .fog-1 { animation-duration: 5s !important; }
+    .hero-content .rise { animation: none; opacity: 1; transform: none; }
+}
+@media (max-width: 768px) {
+    .hero-west .hero-content { padding-top: 170px; }
+    .hero-eyebrow { letter-spacing: 2px; font-size: .7rem; }
+    .hero-eyebrow::before, .hero-eyebrow::after { width: 18px; }
+}
+
+
+/* ---------- Ajustes gerais com a cor laranja ---------- */
+.section-title::after { background-color: var(--accent); }
+.social-links a:hover { background-color: var(--accent); }
+.social-links a:hover i { color: var(--ink) !important; }
+.email-link:hover { color: var(--accent-dark); }

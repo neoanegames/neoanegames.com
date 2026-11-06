@@ -6,70 +6,15 @@
     <title>Forastero | Neoane Games</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forastero.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
+
         .lang-switcher button { display: inline-flex; align-items: center; gap: 6px; }
         .flag-icon { width: 20px; height: auto; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
         .footer-link { color: #a0a0a0; text-decoration: none; transition: color 0.3s ease; margin: 0 10px; font-size: 0.9rem; }
         .footer-link:hover { color: #ffffff; text-decoration: underline; }
-        
-        .game-header { width: 100%; max-height: 500px; object-fit: cover; display: block; margin-top: 80px; }
-        
-        .game-content { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        .game-title { font-size: 3rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
-        .platforms-info { font-size: 1.2rem; margin-bottom: 30px; font-weight: 700; color: #333; }
-        .platforms-info i { margin-right: 5px; font-size: 1.3rem; }
-        
-        /* Botões de Wishlist */
-        .wishlist-container { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
-        .btn-wishlist {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-decoration: none;
-            color: #ffffff;
-            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .btn-wishlist:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-            color: #ffffff;
-        }
-        .btn-wishlist i { font-size: 1.3rem; }
-        .btn-ps5 { background-color: #0070d1; }
-        .btn-ps5:hover { background-color: #005bb5; }
-        .btn-xbox { background-color: #107c41; }
-        .btn-xbox:hover { background-color: #0d6635; }
-
-        /* Carousel de Screenshots e Vídeo */
-        .screenshots-wrapper { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 15px; margin: 30px 0; scroll-behavior: smooth; }
-        .screenshots-wrapper::-webkit-scrollbar { height: 8px; }
-        .screenshots-wrapper::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
-        .screenshots-wrapper::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
-        .screenshots-wrapper img { height: 250px; border-radius: 8px; object-fit: cover; flex-shrink: 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        
-        /* Item de Vídeo no Carousel */
-        .screenshots-wrapper .video-item { height: 250px; width: 444px; flex-shrink: 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .screenshots-wrapper .video-item iframe { width: 100%; height: 100%; border: none; }
-        
-        .info-section { margin-bottom: 40px; }
-        .info-section h2 { font-size: 1.8rem; margin-bottom: 15px; border-bottom: 2px solid #000; display: inline-block; padding-bottom: 5px; }
-        .info-section p { line-height: 1.6; margin-bottom: 15px; font-size: 1.05rem; }
-        .info-list { list-style-type: disc; padding-left: 20px; line-height: 1.6; font-size: 1.05rem; }
-        .info-list li { margin-bottom: 10px; }
-        
-        /* Requisitos de Sistema */
-        .sys-req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background-color: #f8f8f8; padding: 25px; border-radius: 8px; }
-        @media (max-width: 768px) { .sys-req-grid { grid-template-columns: 1fr; } }
-        .sys-req-col h3 { font-size: 1.2rem; margin-bottom: 15px; color: #222; }
-        .sys-req-list { list-style: none; padding: 0; font-size: 0.95rem; line-height: 1.6; }
-        .sys-req-list li strong { color: #555; }
 
         /* Animação e Estilo da "Gaveta" (Dropdown) */
         .dropdown {
@@ -108,7 +53,7 @@
         }
         .dropdown-content a:hover {
             background-color: #f8f8f8;
-            color: #ff4d4d !important;
+            color: #FD9E00 !important;
         }
 
         /* Ajuste Mobile para NavBar */
@@ -138,7 +83,7 @@
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="main#about" data-i18n="nav-about">About</a></li>
-                    
+
                     <!-- Item de Jogos com o Dropdown -->
                     <li class="dropdown">
                         <a href="main#games" data-i18n="nav-games">Games</a>
@@ -164,84 +109,135 @@
         </div>
     </nav>
 
-    <!-- Capa do Jogo -->
-    <img src="assets/CoverImage2.jpg" alt="Forastero Banner" class="game-header anim-fade-up">
+    <!-- Capa do jogo com areia ao vento -->
+    <header class="fx-hero">
+        <img class="fx-cover" src="assets/CoverImage2-opt.jpg" alt="Forastero Banner">
+        <canvas class="sand-canvas" data-sand="0.8" data-tone="dark" aria-hidden="true"></canvas>
+    </header>
 
-    <div class="game-content">
-        <h1 class="game-title anim-fade-up">Forastero</h1>
-        
-        <p class="platforms-info anim-fade-up">
-            <span data-i18n="forastero-platforms">Coming soon to PC, PS5 and Xbox Series X|S</span>
-        </p>
-
-        <!-- Botões de Wishlist -->
-        <div class="wishlist-container anim-fade-up">
-            <a href="https://store.playstation.com/concept/10020586/" target="_blank" rel="noopener noreferrer" class="btn-wishlist btn-ps5">
-                <i class="fa-brands fa-playstation"></i>
-                <span data-i18n="wishlist-ps5">Wishlist on PlayStation 5</span>
-            </a>
-            <a href="https://www.xbox.com/games/store/forastero/9pp8qhtxhj5j" target="_blank" rel="noopener noreferrer" class="btn-wishlist btn-xbox">
-                <i class="fa-brands fa-xbox"></i>
-                <span data-i18n="wishlist-xbox">Wishlist on Xbox Series X|S</span>
-            </a>
-        </div>
-
-        <!-- Steam Widget -->
-        <div class="anim-fade-up" style="margin-bottom: 40px;">
-            <iframe src="https://store.steampowered.com/widget/2401280/" frameborder="0" width="646" height="190" style="max-width: 100%;"></iframe>
-        </div>
-
-        <!-- Screenshots e Trailer -->
-        <div class="screenshots-wrapper anim-fade-up">
-            <!-- Trailer Gameplay -->
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/lAIC3s6nzfk?si=D3ajuHlnYJWxNMS2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- Cartão de wishlist -->
+    <section class="get-section">
+        <div class="get-card anim-fade-up">
+            <div>
+                <span class="badge-soon" data-i18n="forastero-badge">Coming soon</span>
+                <h1 data-i18n="forastero-get-title">Wishlist now</h1>
+                <p class="platforms-info"><span data-i18n="forastero-platforms">Coming soon to PC, PS5 and Xbox Series X|S</span></p>
+                <div class="wishlist-container">
+                    <a href="https://store.playstation.com/concept/10020586/" target="_blank" rel="noopener noreferrer" class="btn-wishlist btn-ps5">
+                        <i class="fa-brands fa-playstation"></i>
+                        <span data-i18n="wishlist-ps5">Wishlist on PlayStation 5</span>
+                    </a>
+                    <a href="https://www.xbox.com/games/store/forastero/9pp8qhtxhj5j" target="_blank" rel="noopener noreferrer" class="btn-wishlist btn-xbox">
+                        <i class="fa-brands fa-xbox"></i>
+                        <span data-i18n="wishlist-xbox">Wishlist on Xbox Series X|S</span>
+                    </a>
+                </div>
             </div>
-            <!-- Imagens -->
-            <img src="assets/PRINT00.jpg" alt="Forastero Screenshot 1">
-            <img src="assets/PRINT01.jpg" alt="Forastero Screenshot 2">
-            <img src="assets/PRINT02.jpg" alt="Forastero Screenshot 3">
-            <img src="assets/PRINT03.jpg" alt="Forastero Screenshot 4">
-            <img src="assets/PRINT04.jpg" alt="Forastero Screenshot 5">
+            <div class="get-steam">
+                <iframe src="https://store.steampowered.com/widget/2401280/" frameborder="0" width="646" height="190" title="Steam"></iframe>
+            </div>
         </div>
+    </section>
 
-        <!-- História -->
-        <div class="info-section anim-fade-up">
-            <h2 data-i18n="forastero-story-title">Story</h2>
-            <p data-i18n="forastero-story-p1">In a land plagued by greed and violence, a government mercenary is hired to recover a mysterious jewel with a hidden power. Driven by the promise of wealth, he embarks on a mission that quickly spirals out of control.</p>
-            <p data-i18n="forastero-story-p2">During his journey, a native warrior seeking revenge and a corrupt banker with hidden agendas cross his path, complicating the mission.</p>
-            <p data-i18n="forastero-story-p3">However, the improper possession of the jewel could result in the destruction of the world, revealing that greed carries the weight to change the course of humanity.</p>
+    <!-- Trailer e screenshots -->
+    <section class="fx-section">
+        <div class="fx-wrap">
+            <h2 class="fx-heading anim-fade-up" data-i18n="forastero-media-title">Trailer &amp; Screenshots</h2>
+
+            <div class="media-gallery anim-fade-up" id="media-gallery">
+                <div class="media-stage">
+                    <div class="stage-view"></div>
+                    <button class="stage-nav stage-prev" type="button" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="stage-nav stage-next" type="button" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="stage-full" type="button" aria-label="Fullscreen"><i class="fa-solid fa-expand"></i></button>
+                    <span class="stage-counter">01 / 06</span>
+                </div>
+                <div class="media-thumbs">
+                    <button class="thumb" type="button" data-type="video"
+                            data-src="https://www.youtube.com/embed/lAIC3s6nzfk?autoplay=1&amp;rel=0&amp;modestbranding=1"
+                            data-poster="https://i.ytimg.com/vi/lAIC3s6nzfk/maxresdefault.jpg"
+                            data-alt="Forastero Trailer">
+                        <img src="assets/thumbs/PRINT00.jpg" alt="Forastero Trailer" loading="lazy">
+                        <span class="thumb-play"><i class="fa-solid fa-play"></i></span>
+                    </button>
+                    <button class="thumb" type="button" data-type="image" data-src="assets/PRINT00.jpg" data-alt="Forastero Screenshot 1"><img src="assets/thumbs/PRINT00.jpg" alt="Forastero Screenshot 1" loading="lazy"></button>
+                    <button class="thumb" type="button" data-type="image" data-src="assets/PRINT01.jpg" data-alt="Forastero Screenshot 2"><img src="assets/thumbs/PRINT01.jpg" alt="Forastero Screenshot 2" loading="lazy"></button>
+                    <button class="thumb" type="button" data-type="image" data-src="assets/PRINT02.jpg" data-alt="Forastero Screenshot 3"><img src="assets/thumbs/PRINT02.jpg" alt="Forastero Screenshot 3" loading="lazy"></button>
+                    <button class="thumb" type="button" data-type="image" data-src="assets/PRINT03.jpg" data-alt="Forastero Screenshot 4"><img src="assets/thumbs/PRINT03.jpg" alt="Forastero Screenshot 4" loading="lazy"></button>
+                    <button class="thumb" type="button" data-type="image" data-src="assets/PRINT04.jpg" data-alt="Forastero Screenshot 5"><img src="assets/thumbs/PRINT04.jpg" alt="Forastero Screenshot 5" loading="lazy"></button>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Jogabilidade -->
-        <div class="info-section anim-fade-up">
-            <h2 data-i18n="forastero-gameplay-title">Gameplay</h2>
-            <ul class="info-list">
-                <li data-i18n="forastero-gp-1">Intense action with strategic depth in melee combat.</li>
-                <li data-i18n="forastero-gp-2">Agile dodges and counterattacks for frantic duels.</li>
-                <li data-i18n="forastero-gp-3">Short and long-range weapons with unique styles.</li>
-                <li data-i18n="forastero-gp-4">An Ultimate meter that accumulates ammo to unleash devastating attacks.</li>
-                <li data-i18n="forastero-gp-5">Special techniques that allow aerial combos and enemy defense breaking.</li>
-            </ul>
+    <!-- História -->
+    <section class="fx-section">
+        <div class="fx-wrap">
+            <h2 class="fx-heading anim-fade-up" data-i18n="forastero-story-title">Story</h2>
+            <div class="story-grid">
+                <p class="story-lead anim-fade-up" data-i18n="forastero-story-lead">Greed has a price. The world will pay it.</p>
+                <div class="story-text anim-fade-up">
+                    <p data-i18n="forastero-story-p1">In a land plagued by greed and violence, a government mercenary is hired to recover a mysterious jewel with a hidden power. Driven by the promise of wealth, he embarks on a mission that quickly spirals out of control.</p>
+                    <p data-i18n="forastero-story-p2">During his journey, a native warrior seeking revenge and a corrupt banker with hidden agendas cross his path, complicating the mission.</p>
+                    <p data-i18n="forastero-story-p3">However, the improper possession of the jewel could result in the destruction of the world, revealing that greed carries the weight to change the course of humanity.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Características -->
-        <div class="info-section anim-fade-up">
-            <h2 data-i18n="forastero-features-title">Features</h2>
-            <ul class="info-list">
-                <li data-i18n="forastero-feat-1">Upgrade shop to unlock new moves, special abilities, and improve attributes.</li>
-                <li data-i18n="forastero-feat-2">Adaptive difficulty: A "Wanted Poster" will measure your skills, increasing or decreasing the game's difficulty in real-time.</li>
-                <li data-i18n="forastero-feat-3">Stylized visuals inspired by Wild West comic books.</li>
-                <li data-i18n="forastero-feat-4">Finisher system and Quick Time Events for cinematic and brutal moments.</li>
-                <li data-i18n="forastero-feat-5">Varied enemies with unique reactions, doses of dark humor, and striking cultural references.</li>
-            </ul>
+    <!-- Jogabilidade -->
+    <section class="fx-section">
+        <div class="fx-wrap">
+            <h2 class="fx-heading anim-fade-up" data-i18n="forastero-gameplay-title">Gameplay</h2>
+            <div class="card-grid">
+                <div class="feat-card anim-fade-up" style="transition-delay:0.00s">
+                    <p data-i18n="forastero-gp-1">Intense action with strategic depth in melee combat.</p>
+                </div>
+                <div class="feat-card anim-fade-up" style="transition-delay:0.08s">
+                    <p data-i18n="forastero-gp-2">Agile dodges and counterattacks for frantic duels.</p>
+                </div>
+                <div class="feat-card anim-fade-up" style="transition-delay:0.16s">
+                    <p data-i18n="forastero-gp-3">Short and long-range weapons with unique styles.</p>
+                </div>
+                <div class="feat-card anim-fade-up" style="transition-delay:0.24s">
+                    <p data-i18n="forastero-gp-4">An Ultimate meter that accumulates ammo to unleash devastating attacks.</p>
+                </div>
+                <div class="feat-card anim-fade-up" style="transition-delay:0.32s">
+                    <p data-i18n="forastero-gp-5">Special techniques that allow aerial combos and enemy defense breaking.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Requisitos de Sistema -->
-        <div class="info-section anim-fade-up">
-            <h2 data-i18n="forastero-sys-title">System Requirements</h2>
-            <div class="sys-req-grid">
-                <!-- Mínimos -->
+    <!-- Características -->
+    <section class="fx-section">
+        <div class="fx-wrap">
+            <h2 class="fx-heading anim-fade-up" data-i18n="forastero-features-title">Features</h2>
+            <div class="card-grid">
+                <div class="feat-card anim-fade-up" style="transition-delay:0.00s">
+                    <p data-i18n="forastero-feat-1">Upgrade shop to unlock new moves, special abilities, and improve attributes.</p>
+                </div>
+                <div class="feat-card anim-fade-up" style="transition-delay:0.08s">
+                    <p data-i18n="forastero-feat-2">Adaptive difficulty: A "Wanted Poster" will measure your skills, increasing or decreasing the game's difficulty in real-time.</p>
+                </div>
+                <div class="feat-card anim-fade-up" style="transition-delay:0.16s">
+                    <p data-i18n="forastero-feat-3">Stylized visuals inspired by Wild West comic books.</p>
+                </div>
+                <div class="feat-card anim-fade-up" style="transition-delay:0.24s">
+                    <p data-i18n="forastero-feat-4">Finisher system and Quick Time Events for cinematic and brutal moments.</p>
+                </div>
+                <div class="feat-card anim-fade-up" style="transition-delay:0.32s">
+                    <p data-i18n="forastero-feat-5">Varied enemies with unique reactions, doses of dark humor, and striking cultural references.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requisitos de sistema -->
+    <section class="fx-section">
+        <div class="fx-wrap">
+            <h2 class="fx-heading anim-fade-up" data-i18n="forastero-sys-title">System Requirements</h2>
+            <div class="sys-req-grid anim-fade-up">
                 <div class="sys-req-col">
                     <h3 data-i18n="sys-min-title">Minimum:</h3>
                     <ul class="sys-req-list">
@@ -254,8 +250,7 @@
                         <li><strong data-i18n="sys-sound">Sound Card:</strong> DirectX Compatible</li>
                     </ul>
                 </div>
-                <!-- Recomendados -->
-                <div class="sys-req-col">
+                <div class="sys-req-col rec">
                     <h3 data-i18n="sys-rec-title">Recommended:</h3>
                     <ul class="sys-req-list">
                         <li data-i18n="sys-req-os-64">Requires a 64-bit processor and operating system</li>
@@ -269,6 +264,16 @@
                 </div>
             </div>
         </div>
+    </section>
+    <div class="fx-bottom-space"></div>
+
+    <!-- Lightbox das screenshots -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+        <span class="lb-count">01 / 05</span>
+        <button class="lb-btn lb-close" type="button" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <button class="lb-btn lb-prev" type="button" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="lb-frame"><img class="lb-img" src="" alt=""></div>
+        <button class="lb-btn lb-next" type="button" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
 
     <!-- Footer -->
@@ -277,7 +282,7 @@
             <p>
                 <span data-i18n="footer-text">&copy; 2026 Neoane Games. All rights reserved.</span>
                 <br><br>
-                <a href="privacy" class="footer-link" data-i18n="footer-privacy">Privacy Policy</a> | 
+                <a href="privacy" class="footer-link" data-i18n="footer-privacy">Privacy Policy</a> |
                 <a href="terms" class="footer-link" data-i18n="footer-terms">Terms and Conditions</a>
             </p>
         </div>
@@ -289,6 +294,11 @@
             en: {
                 "nav-about": "About", "nav-games": "Games", "nav-careers": "Careers", "nav-contact": "Contact", "nav-social": "Social",
                 "forastero-platforms": "Coming soon to PC, PS5 and Xbox Series X|S",
+                "forastero-badge": "Coming soon",
+                "forastero-get-title": "Wishlist now",
+                "forastero-media-title": "Trailer & Screenshots",
+                "media-play": "Play trailer",
+                "forastero-story-lead": "Greed has a price. The world will pay it.",
                 "wishlist-ps5": "Wishlist on PlayStation 5",
                 "wishlist-xbox": "Wishlist on Xbox Series X|S",
                 "forastero-story-title": "Story",
@@ -318,6 +328,11 @@
             pt: {
                 "nav-about": "Sobre", "nav-games": "Jogos", "nav-careers": "Carreiras", "nav-contact": "Contato", "nav-social": "Social",
                 "forastero-platforms": "Em breve para PC, PS5 e Xbox Series X|S",
+                "forastero-badge": "Em breve",
+                "forastero-get-title": "Adicione à lista de desejos",
+                "forastero-media-title": "Trailer e Screenshots",
+                "media-play": "Assistir trailer",
+                "forastero-story-lead": "A ganância tem um preço. O mundo vai pagá-lo.",
                 "wishlist-ps5": "Adicionar à Lista de Desejos (PS5)",
                 "wishlist-xbox": "Adicionar à Lista de Desejos (Xbox)",
                 "forastero-story-title": "História",
@@ -356,23 +371,29 @@
             document.getElementById('btn-en').classList.remove('active');
             document.getElementById('btn-pt').classList.remove('active');
             document.getElementById('btn-' + lang).classList.add('active');
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
             localStorage.setItem('neoane-lang', lang);
         }
 
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('anim-visible'); } 
+                if (entry.isIntersecting) { entry.target.classList.add('anim-visible'); observer.unobserve(entry.target); }
             });
-        }, observerOptions);
+        }, { root: null, rootMargin: '0px 0px -40px 0px', threshold: 0.1 });
 
         window.onload = () => {
             const savedLang = localStorage.getItem('neoane-lang') || 'en';
             setLanguage(savedLang);
-            document.querySelectorAll('.anim-fade-up, .anim-slide-left').forEach(el => {
-                observer.observe(el);
-            });
+            document.querySelectorAll('.anim-fade-up, .anim-slide-left').forEach(el => observer.observe(el));
         };
+
+        // Navbar ganha sombra ao rolar
+        const nav = document.querySelector('.navbar');
+        const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 10);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
     </script>
+    <script src="js/sand.js" defer></script>
+    <script src="js/gallery.js" defer></script>
 </body>
 </html>
